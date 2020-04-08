@@ -60,6 +60,8 @@ a {
   margin: 50px auto;
   background: rgb(240, 192, 255);
   padding: 20px 70px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  min-height: 400px;
 }
 
 .title{
@@ -70,6 +72,7 @@ a {
 .input__wrapper {
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 
@@ -99,126 +102,102 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
+  padding: 10px 20px;
+
+}
+
+.todo__item:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 50px;
+  width: 0;
+  background: rgb(243, 102, 102);
+  transition: all .6s ease;
+}
+
+.todo__item-delete:before {
+  width: 100%;
+}
+
+.todo__text {
+  position: relative;
   font-family: 'Caveat', cursive;
   color: #333;
   font-size: 30px;
-  padding: 10px 20px;
+  line-height: 30px;
+  max-width: calc(100% - 50px);
+  transition: all .4s ease;
+}
+
+/* .todo__text {
+  position: relative;
+  font-family: 'Caveat', cursive;
+  color: #333;
+  font-size: 30px;
+  line-height: 30px;
+  max-width: calc(100% - 50px);
+  transition: all .4s ease;
+  background: transparent;
+  border: 0;
+} */
+
+
+.todo__text:before {
+  content: '';
+  position: absolute;
+  top: 55%;
+  left: 0;
+  height: 1px;
+  width: 0;
+  background: rgba(59, 59, 59, .7);
+  transition: all .4s ease;
+}
+
+.todo__delete {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  z-index: 100;
+} 
+
+.svg__input {
+  transition: all .3s ease;
+  fill: #333;
+}
+
+.input__btn:hover .svg__input{
+  fill: rgb(243, 102, 102);
+}
+.svg__delete {
+  transition: all .3s ease;
+  fill: #333;
+}
+
+.todo__delete:hover .svg__delete{
+  fill: rgb(243, 102, 102);
+}
+
+.todo__item-delete .todo__delete:hover .svg__delete {
+  fill: #333;
+}
+
+.input__svg {
+  height: 25px;
+  width: 25px;
+  cursor: pointer;
 }
 
 .item__done{
-  background: rgb(68, 170, 55);
+  color: rgba(51, 51, 51, .6);
+}
+
+.item__done:before {
+  width: 100%;
 }
 
 .delete {
 	display: none;
 }
-
-/* 
-body {
-	background: #04A1BF;
-	text-align: center;
-	font-family: 'Open Sans', sans-serif;
-}
-
-.intro {
-	margin: 30px 0px;
-	font-weight: bold;
-}
-
-h1 {
-	color: #ffffff;
-	text-transform: uppercase;
-	font-weight: 800;
-}
-
-p {
-	font-weight: 600;
-}
-
-#first {
-	margin-top: 10px;
-	color: #FFCD5D;
-}
-
-#second {
-	color: #51DF70;
-
-}
-
-#third {
-	color: #025F70;
-	margin-bottom: 30px;
-}
-
-
-#enter {
-	border: none;
-	padding: 5px 15px;
-	border-radius: 5px;
-	color: #04A1BF;
-	background-color: #025F70;
-	transition: all 0.75s ease;
-	-webkit-transition: all 0.75s ease;
-	-moz-transition: all 0.75s ease;
-	-ms-transition: all 0.75s ease;
-	-o-transition: all 0.75 ease;
-	font-weight: normal;
-}
-
-#enter:hover{
-	background-color: #02798F;
-	color: #FFCD5D;
-}
-
-ul {
-	text-align: left;
-	margin-top: 20px;
-}
-
-
-li {
-	list-style: none;
-	padding: 10px 20px;
-	color: #ffffff;
-	text-transform: capitalize;
-	font-weight: 600;
-	border: 2px solid #025f70;
-	border-radius: 5px;
-	margin-bottom: 10px;
-	background: #4EB9CD;
-	transition: all 0.75s ease;
-	-webkit-transition: all 0.5s ease;
-	-moz-transition: all 0.5s ease;
-	-ms-transition: all 0.5s ease;
-	-o-transition: all 0.5 ease;
-}
-
-li:hover {
-	background: #76CFE0;
-}
-
-li > button {
-	font-weight: normal;
-	background: none;
-	border: none;
-	float: right;
-	color: #025f70;
-	font-weight: 800;
-}
-
-input {
-	border-radius: 5px;
-	min-width: 65%;
-	padding: 5px;
-	border: none;
-}
-
-
-.done {
-	background: #51DF70 !important;
-	color: #00891E;
-}
-
-.delete {
-	display: none;
-} */
