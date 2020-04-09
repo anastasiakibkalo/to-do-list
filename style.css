@@ -80,6 +80,23 @@ a {
   display: inline-block;
   width: 35px;
   height: 35px;
+  padding: 5px;
+  background: rgb(246, 214, 255);
+  transition: all .3s ease;
+
+}
+
+.svg__input {
+  transition: all .3s ease;
+  fill: #333;
+}
+
+.input__btn:hover .svg__input{
+  fill: rgb(243, 102, 102);
+}
+
+.input__btn:hover{
+  box-shadow: 8px 7px 30px rgba(0,0,0,0.25), 0 6px 14px rgba(0,0,0,0.22)
 }
 
 .input__new {
@@ -88,10 +105,33 @@ a {
   width: 400px;
   padding: 10px 20px;
   font-family: 'Montserrat', sans-serif;
+  background: rgb(246, 214, 255);
+  transition: all .3s ease;
 }
 
 .input__new:focus{
   outline: none;
+  box-shadow: 8px 7px 30px rgba(0,0,0,0.25), 0 6px 14px rgba(0,0,0,0.22)
+}
+
+.input__new:hover{
+  box-shadow: 8px 7px 30px rgba(0,0,0,0.25), 0 6px 14px rgba(0,0,0,0.22)
+}
+
+
+
+.todo__wrapper {
+  position: relative;
+}
+
+.todo__text-width {
+  position: absolute;
+  top: -1000px;
+  left: -1000px;
+  font-family: 'Caveat', cursive;
+  font-size: 30px;
+  line-height: 30px;
+  width: auto;
 }
 
 .todo__list{
@@ -103,8 +143,7 @@ a {
   justify-content: space-between;
   align-items: center;
   position: relative;
-  padding: 10px 20px;
-
+  padding: 5px 20px;
 }
 
 .todo__item:before {
@@ -122,30 +161,13 @@ a {
   width: 100%;
 }
 
-.todo__text {
+.todo__text-wrapper {
   position: relative;
-  font-family: 'Caveat', cursive;
-  color: #333;
-  font-size: 30px;
-  line-height: 30px;
-  max-width: calc(100% - 50px);
-  transition: all .4s ease;
+  height: 40px;
+
 }
 
-/* .todo__text {
-  position: relative;
-  font-family: 'Caveat', cursive;
-  color: #333;
-  font-size: 30px;
-  line-height: 30px;
-  max-width: calc(100% - 50px);
-  transition: all .4s ease;
-  background: transparent;
-  border: 0;
-} */
-
-
-.todo__text:before {
+.todo__text-wrapper:before {
   content: '';
   position: absolute;
   top: 55%;
@@ -156,27 +178,51 @@ a {
   transition: all .4s ease;
 }
 
-.todo__delete {
+.todo__text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-family: 'Caveat', cursive;
+  color: #333;
+  font-size: 30px;
+  line-height: 30px;
+  transition: all .4s ease;
+  background: transparent;
+  border: 0;
+  min-width: 30px;
+}
+
+.todo__text:focus{
+  outline: none;
+  background: rgb(246, 214, 255);
+  color: #333;
+}
+
+.todo__btn-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.todo__plus,
+.todo__delete,
+.todo__editor {
   display: inline-block;
   width: 25px;
   height: 25px;
   z-index: 100;
-} 
+  margin-left: 15px;
+}
 
-.svg__input {
+.svg__plus,
+.svg__delete, 
+.svg__editor {
   transition: all .3s ease;
   fill: #333;
 }
 
-.input__btn:hover .svg__input{
-  fill: rgb(243, 102, 102);
-}
-.svg__delete {
-  transition: all .3s ease;
-  fill: #333;
-}
-
-.todo__delete:hover .svg__delete{
+.todo__plus:hover .svg__plus, 
+.todo__delete:hover .svg__delete {
   fill: rgb(243, 102, 102);
 }
 
@@ -190,12 +236,12 @@ a {
   cursor: pointer;
 }
 
-.item__done{
-  color: rgba(51, 51, 51, .6);
-}
-
 .item__done:before {
   width: 100%;
+}
+
+.item__done .todo__text {
+  color: rgba(51, 51, 51, .6);
 }
 
 .delete {
