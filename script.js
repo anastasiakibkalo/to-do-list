@@ -92,18 +92,18 @@ function createListElement() {
 
   //input edit
   function inputEdit() {
-    // todoName.blur();
-    todoName.toggleAttribute('disabled');
-    todoWrapper.classList.remove("item__done");
 
-    if(todoName.disabled == false) {
+    if(todoName.disabled) {
+      todoName.removeAttribute('disabled');
       todoName.focus();
-      todoName.addEventListener('blur', inputBlur);
-
-      // editorBtn.addEventListener('click', inputEdit)
+      todoName.selectionStart = todoName.value.length;
+      todoWrapper.classList.remove("item__done");
     }
+    else {
+      console.log('work');
+      todoName.setAttribute("disabled", "disabled")
+    } 
   }
-
   editorBtn.addEventListener('click', inputEdit)
 
   
@@ -122,7 +122,7 @@ function createListElement() {
   function inputBlur() {
     todoName.disabled = true;
   }
-
+  todoName.addEventListener('blur', inputBlur);
 
 }
 
